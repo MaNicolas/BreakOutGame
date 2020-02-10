@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
 
     #region Methods
 
-    public void Move()
+    private void Move()
     {
         _transform.position = new Vector2(_transform.position.x + Input.GetAxis("Horizontal") * Speed * Time.deltaTime, _transform.position.y);
     }
@@ -35,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
 
     #region System
 
-    void Start()
+    void Awake()
     {
         Speed = _speed;
         _transform = GetComponent<Transform>();
@@ -60,7 +60,7 @@ public class PlayerMovement : MonoBehaviour
     #region Private Members
 
     [SerializeField]
-    private float _speed;
+    private float _speed = 200f;
 
     private Transform _transform;
     private float _spriteSizeX;
