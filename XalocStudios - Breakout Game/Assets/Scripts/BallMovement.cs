@@ -43,17 +43,17 @@ public class BallMovement : MonoBehaviour
 
             if (Input.GetAxis("Horizontal") == 0f)    //Checking if the Paddle is standing still
             {
-                //_direction = Vector3.up;
+                _direction = Vector3.up;
                 _transform.position = new Vector3(_transform.position.x, _transform.position.y + _transform.up.y, 0);
             }
             else if (Input.GetAxis("Horizontal") > 0f)  //Checking if the Paddle is moving right
             {
-                //_direction = new Vector3(1f, 1f, 0f);
+                _direction = new Vector3(1f, 1f, 0f);
                 _transform.position = new Vector3(_transform.position.x, _transform.position.y + _transform.up.y, 0);
             }
             else if (Input.GetAxis("Horizontal") < 0f)  //Checking if the Paddle is moving left
             {
-                //_direction = new Vector3(-1f, 1f, 0f);
+                _direction = new Vector3(-1f, 1f, 0f);
                 _transform.position = new Vector3(_transform.position.x, _transform.position.y + _transform.up.y, 0);
             }
         }
@@ -63,12 +63,28 @@ public class BallMovement : MonoBehaviour
     {
         if (_inPlay)
         {
-            dir = (_transform.position - Camera.main.transform.position).normalized;
+            //dir = (_transform.position - Camera.main.transform.position).normalized;
 
             _tempPos = _transform.position;
-            _tempPos.x += dir.x * BallSpeed * Time.deltaTime;
-            _tempPos.y -= dir.y * BallSpeed * Time.deltaTime;
+            _tempPos.x += _direction.x * BallSpeed * Time.deltaTime;
+            _tempPos.y += _direction.y * BallSpeed * Time.deltaTime;
             _transform.position = _tempPos;
+        }
+    }
+
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.collider != null)
+        {
+            Debug.Log("Collision!");
+        }
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Brick"))
+        {
+            Debug.Log("Do Something!!!!!!!!!!");
         }
     }
 
