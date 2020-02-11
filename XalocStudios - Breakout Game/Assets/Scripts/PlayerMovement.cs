@@ -15,7 +15,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void Move()
     {
-        _transform.position = new Vector2(_transform.position.x + Input.GetAxis("Horizontal") * Speed * Time.deltaTime, _transform.position.y);
+        //_transform.position = new Vector2(_transform.position.x + Input.GetAxis("Horizontal") * Speed * Time.deltaTime, _transform.position.y);
+        _tempPos = _transform.position;
+        _tempPos.x += Input.GetAxis("Horizontal") * Speed * Time.deltaTime;
+        _transform.position = _tempPos;
     }
 
     private void WithinBounds()
@@ -64,6 +67,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Transform _transform;
     private float _spriteSizeX;
+    private Vector3 _tempPos;
 
     #endregion
 }
