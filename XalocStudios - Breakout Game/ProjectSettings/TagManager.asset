@@ -10,6 +10,7 @@ TagManager:
   - Brick
   - Ball
   - Capsule
+  - Unbreakable
   layers:
   - Default
   - TransparentFX

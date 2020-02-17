@@ -25,6 +25,10 @@ public class BulletMovement : MonoBehaviour
             collision.gameObject.GetComponent<Bricks>().TakeDamage();
             Destroy(gameObject);
         }
+        else if (collision.CompareTag("Unbreakable"))
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnBecameInvisible()

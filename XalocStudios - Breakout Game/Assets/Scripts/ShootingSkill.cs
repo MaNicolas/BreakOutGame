@@ -33,7 +33,7 @@ public class ShootingSkill : MonoBehaviour
                 {
                     _hasFired = true;
                     _coolDownTimer = _timeBetweenShots;
-                    Instantiate(_bullet, transform.position, Quaternion.identity);
+                    Instantiate(_bullet, _instantiateLocation.position, Quaternion.identity);
                     _soundManager.PlaySound(_missileSound);
                 }
             }
@@ -55,6 +55,8 @@ public class ShootingSkill : MonoBehaviour
     private SoundManager _soundManager;
     [SerializeField]
     private AudioClip _missileSound;
+    [SerializeField]
+    private Transform _instantiateLocation;
 
     #endregion
 }
