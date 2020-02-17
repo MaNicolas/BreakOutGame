@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a41cadb7093fe5c4492ad50e0a7f9461, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ballSpeed: 30
+  _ballSpeed: 20
   _ballSound: {fileID: 8300000, guid: 6a0ee04dd8764ca4b98a0fc3fc598db7, type: 3}
 --- !u!50 &7604059645162773134
 Rigidbody2D:
