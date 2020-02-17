@@ -4,27 +4,22 @@ using UnityEngine;
 
 public class WithinBounds : MonoBehaviour
 {
-    private Transform _transform;
+    #region System
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         _transform = GetComponent<Transform>();
-        _spriteSizeX = GetComponent<SpriteRenderer>().sprite.bounds.size.x;
-        _spriteSizeY = GetComponent<SpriteRenderer>().sprite.bounds.size.y;
-
-        _screenLimitY = (Camera.main.orthographicSize * Camera.main.aspect) - _spriteSizeY / 2;
-
         _collider = GetComponent<BoxCollider2D>();
+        
+        _spriteSizeY = GetComponentInChildren<SpriteRenderer>().sprite.bounds.size.y;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (gameObject.CompareTag("TopWall"))
         {
             _transform.position = new Vector2(0, Camera.main.orthographicSize - _spriteSizeY / 2);
-            _collider.size = new Vector2(Camera.main.orthographicSize * 2 * Camera.main.aspect, _collider.size.y);
+            _collider.size = new Vector2(Camera.main.orthographicSize * Camera.main.aspect * 2, _collider.size.y);
         }
         else if (gameObject.CompareTag("LeftWall"))
         {
@@ -38,8 +33,13 @@ public class WithinBounds : MonoBehaviour
         }
     }
 
-    private float _spriteSizeX;
+    #endregion
+
+    #region Private Members
+
+    private Transform _transform;
     private float _spriteSizeY;
-    private float _screenLimitY;
     private BoxCollider2D _collider;
+
+    #endregion
 }
